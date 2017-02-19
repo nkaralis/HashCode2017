@@ -10,7 +10,6 @@
 using namespace std;
 
 int main() {
-	int i;
 	cout << "!!!Hello hash!!!" << endl; // prints
 	return 0;
 	
