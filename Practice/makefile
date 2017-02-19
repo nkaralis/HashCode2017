@@ -6,13 +6,10 @@ CC      = g++
 FLAGS   = -g -c
 
 all: $(OBJS)
-	$(CC) -g $(OBJS) -o $(OUT) -L. -loracle_v3 -lhash -lpthread
+	$(CC) -g $(OBJS) -o $(OUT)
 
-main.o: main.c
-	$(CC) $(FLAGS) main.c
-
-functions.o: functions.c
-	$(CC) $(FLAGS) functions.c
+main.o: main.cpp
+	$(CC) $(FLAGS) main.cpp
 
 clean:
 	rm -f $(OBJS) $(OUT)
