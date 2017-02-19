@@ -34,8 +34,8 @@ int main(){
 			scanf(" %c", &pizza[i][j]);
 		}
 	}
-	/* *************************************************** */
-
+	
+	
 	for (int i = 0; i < COLUMNS; i++)
 	{
 		for (int j = 0; j < ROWS; j++)
@@ -91,6 +91,8 @@ int main(){
  	delete[] pizza;
 
 	return 0;
+
+	
 
 
 }
