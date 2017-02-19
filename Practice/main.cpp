@@ -27,6 +27,14 @@ int main(){
 	}
 	/* *************************************************** */
 
+
+	/* free memory */
+	for(int i = 0; i < nrows; i++){
+		delete[] pizza[i];
+	}
+	delete[] pizza;
+	/* *********** */
+
 	return 0;
 
 }
