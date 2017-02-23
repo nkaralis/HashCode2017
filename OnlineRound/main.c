@@ -3,15 +3,34 @@
 #include <stdbool.h>
 
 int comp (const void* elem1, const void* elem2) {
-  printf("Comparing: %d with %d\n", elem1, elem2);
   const int *a = *(const int **)elem1;
   const int *b = *(const int **)elem2;
-  printf("Comparing: %d with %d\n", a[2], b[2]);
   if(a[2] < b[2])
     return 1;
   if(a[2] > b[2])
     return -1;
   return 0;
+}
+
+void print_results(int32_t** vid_per_cache, int32_t n_caches, int32_t n_vids) {
+  for(int32_t cache_cand = 0; cache_cand < n_caches; cache_cand++) {
+    int32_t vid_cand;
+    for(vid_cand = 0; vid_cand < n_vids; vid_cand++) {
+      if(vid_per_cache[cache_cand][vid_cand] == 1) {
+        printf("%d", cache_cand);
+        printf(" %d", vid_cand); vid_cand++;
+        break;
+      }
+    }
+    for(vid_cand; vid_cand < n_vids; vid_cand++) {
+      if(vid_per_cache[cache_cand][vid_cand] == 1) {
+        printf(" %d", vid_cand);
+      }
+    }
+    printf("\n");
+  }
+
+  return;
 }
 
 int main(void){
@@ -59,17 +78,7 @@ int main(void){
 		scanf("%d", &requests[i][2]);
 	}
 
-  printf("The pointers of requests are:\n");
-  printf("The request is: %d\n", requests);
-  for(int32_t counter = 0; counter < nrequestsDisc; counter++) {
-    printf("The requests[%d] is: %d\n", counter, requests[counter]);
-  }
-
   qsort(requests, nrequestsDisc, sizeof(requests[0]), comp);
-
-  for(int32_t counter = 0; counter < nrequestsDisc; counter++) {
-    printf("%d, %d, %d\n", requests[counter][0], requests[counter][1], requests[counter][2]);
-  }
 
 	/* free memory */
 
