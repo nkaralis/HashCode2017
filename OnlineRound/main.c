@@ -1,5 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+
+int comp (const void* elem1, const void* elem2) {
+  printf("Comparing: %d with %d\n", elem1, elem2);
+  const int *a = *(const int **)elem1;
+  const int *b = *(const int **)elem2;
+  printf("Comparing: %d with %d\n", a[2], b[2]);
+  if(a[2] < b[2])
+    return 1;
+  if(a[2] > b[2])
+    return -1;
+  return 0;
+}
 
 int main(void){
 
@@ -46,7 +59,17 @@ int main(void){
 		scanf("%d", &requests[i][2]);
 	}
 
+  printf("The pointers of requests are:\n");
+  printf("The request is: %d\n", requests);
+  for(int32_t counter = 0; counter < nrequestsDisc; counter++) {
+    printf("The requests[%d] is: %d\n", counter, requests[counter]);
+  }
 
+  qsort(requests, nrequestsDisc, sizeof(requests[0]), comp);
+
+  for(int32_t counter = 0; counter < nrequestsDisc; counter++) {
+    printf("%d, %d, %d\n", requests[counter][0], requests[counter][1], requests[counter][2]);
+  }
 
 	/* free memory */
 
