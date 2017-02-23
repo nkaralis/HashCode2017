@@ -14,11 +14,13 @@ int comp (const void* elem1, const void* elem2) {
 
 void print_results(int32_t** vid_per_cache, int32_t n_caches, int32_t n_vids) {
   for(int32_t cache_cand = 0; cache_cand < n_caches; cache_cand++) {
+    bool used_last_cache = false;
     int32_t vid_cand;
     for(vid_cand = 0; vid_cand < n_vids; vid_cand++) {
       if(vid_per_cache[cache_cand][vid_cand] == 1) {
         printf("%d", cache_cand);
         printf(" %d", vid_cand); vid_cand++;
+        used_last_cache = true;
         break;
       }
     }
@@ -27,7 +29,9 @@ void print_results(int32_t** vid_per_cache, int32_t n_caches, int32_t n_vids) {
         printf(" %d", vid_cand);
       }
     }
-    printf("\n");
+    if(used_last_cache) {
+      printf("\n");
+    }
   }
 
   return;
