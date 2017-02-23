@@ -1,7 +1,7 @@
 OBJS    = main.o
 SOURCE  = main.c
 HEADER  = 
-OUT     = pizza
+OUT     = distribution
 CC      = gcc
 FLAGS   = -g -c
 
